@@ -6,6 +6,7 @@ import Home from './Home'
 import Nav from './Nav'
 import QuestionPage from './QuestionPage'
 import Login from './Login'
+import QuestionList from './Home'
 import authedUser from '../reducers/authedUser'
 
 class App extends Component {
@@ -24,9 +25,13 @@ render() {
             ? null:
             <Nav />  }    
             
+            {/* {this.props.loading === true
+            ? null:
+            <QuestionPage match={{params: {id: 'xj352vofupe1dqz9emx13r'}}}/>  } */}
+
             {this.props.loading === true
             ? null:
-            <QuestionPage match={{params: {id: 'xj352vofupe1dqz9emx13r'}}}/>  }
+            <QuestionList /> }
             
             {this.props.loading === true
             ? null:
