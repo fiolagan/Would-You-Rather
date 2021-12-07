@@ -1,23 +1,17 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import QuestionCard from './QuestionCard'
 
-class QuestionsUnanswered extends Component {
+
+class QuestionUnansweredList extends Component {
     render() {
         const { authUser, user, question, author, match } = this.props
-        console.log(this.props)
         return (
-            <div>
-                <h3>Unanswered Questions</h3>
+            <div className="question-list">
                 <ul>
                 {this.props.questionIds.map((id) => (
                     question[id].optionOne.votes.indexOf(authUser) === -1 && question[id].optionTwo.votes.indexOf(authUser) === -1? 
-                        <li key={id}>
-                            <div>question author: {user[question[id].author].name}</div>
-                            <div>answered: {question[id].optionOne.votes} {question[id].optionTwo.votes}</div>
-                            <div>question id: {id}</div>
-                            <div>authed user: {authUser}</div>
-                            <hr></hr>
-                        </li>:
+                        <QuestionCard  id={id} key={id} />:
                         null
                     ))}
                     
@@ -41,4 +35,4 @@ function mapStateToProps ({ authedUser, questions, users }, { id  }) {
     }
 }
 
-export default connect(mapStateToProps)(QuestionsUnanswered)
+export default connect(mapStateToProps)(QuestionUnansweredList)

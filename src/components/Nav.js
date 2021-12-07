@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { setAuthedUser } from '../actions/authedUser'
+import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 class Nav extends Component {
     handleSubmit = (e) => {
@@ -29,10 +32,12 @@ class Nav extends Component {
                 <div className='row'>
                     <div className='col-sm-12 col-md-8'>
                         <ul className='nav-links'>
-                            <li>Home</li>
+                       
+                        
+                            <li><Link to='/' exact='true' className='active' className='tab'>Home</Link  ></li>
                             <li>New Question</li>
                             <li>Leaderboard</li>
-                            
+                          
                         </ul>
                     </div>
                     <div className='col-sm-12 col-md-4'>

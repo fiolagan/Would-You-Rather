@@ -1,13 +1,12 @@
 import React, { Component, Fragment } from 'react'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
 import LoadingBar from 'react-redux-loading'
-import Home from './Home'
 import Nav from './Nav'
 import QuestionPage from './QuestionPage'
 import Login from './Login'
-import QuestionList from './Home'
-import authedUser from '../reducers/authedUser'
+import Home from './Home'
 
 class App extends Component {
 
@@ -16,8 +15,9 @@ componentDidMount() {
 }
 
 render() {
-
+  const { authedUser } = this.props
   return (
+    <Router>
     <Fragment>
       <LoadingBar />
       <div className="App"> 
@@ -25,13 +25,14 @@ render() {
             ? null:
             <Nav />  }    
             
-            {/* {this.props.loading === true
+            {this.props.loading === true
             ? null:
-            <QuestionPage match={{params: {id: 'xj352vofupe1dqz9emx13r'}}}/>  } */}
+            <Route path='/questions/:id' component={QuestionPage} />  }
 
             {this.props.loading === true
             ? null:
-            <QuestionList /> }
+            <Route path='/' exact component={Home} />
+             }
             
             {this.props.loading === true
             ? null:
@@ -39,6 +40,7 @@ render() {
 
       </div>
     </Fragment>
+    </Router>
     )
   }
 }
