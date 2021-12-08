@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { setAuthedUser } from '../actions/authedUser'
-import { NavLink } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 
 class Nav extends Component {
@@ -15,10 +13,11 @@ class Nav extends Component {
 
     render() {
         const { authUser, user } = this.props
-        const { name } = user
+ 
         let greeting
         let avatar
         let avatarClass
+        
         if (typeof authUser !== 'undefined' && authUser) {
             greeting = `${user[authUser].name} `
             avatar = `${user[authUser].avatarURL}`
@@ -44,16 +43,21 @@ class Nav extends Component {
                         <ul className='nav-login'>
                             <li>
                                 Hello, {greeting}
-                                <img 
+                                 
+                                {authUser !== '' ?
+                                <div><img 
                                 src={avatar} 
                                 className={avatarClass}
-                                />  
+                                alt='Avatar'
+                                /> 
                                 <button
                                 value=''
                                 className='button'
                                 onClick={this.handleSubmit}
                                 > Log Out
                                 </button>
+                                </div>:
+                                null}
                             </li>
                         </ul>
                     </div>

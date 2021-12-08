@@ -34,7 +34,7 @@ class QuestionResult extends Component {
                                 className='vote-bar'
                                 style={{"width" : `${questionOnePercent}%`}}
                             >
-                                <span>{questionOneVotes / totalVotes * 100}%</span>
+                                <span>{Math.round(questionOneVotes / totalVotes * 100 * 100) / 100}%</span>
                             </div>
                         </div>
                         <div className='results'><strong>{questionOneVotes} out of {totalVotes} votes</strong></div>
@@ -46,7 +46,7 @@ class QuestionResult extends Component {
                                 className='vote-bar'
                                 style={{"width" : `${questionTwoPercent}%`}}
                             >
-                                <span>{questionTwoVotes / totalVotes * 100}%</span>
+                                <span>{Math.round(questionTwoVotes / totalVotes * 100 * 100) / 100}%</span>
                             </div>
                         </div>
                         <div className='results'><strong>{questionTwoVotes} out of {totalVotes} votes</strong></div>

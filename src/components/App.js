@@ -14,29 +14,45 @@ componentDidMount() {
   this.props.dispatch(handleInitialData())
 }
 
+
+
 render() {
-  const { authedUser } = this.props
+
+  let isLoggedIn = false
+  if (this.props.authedUser !== '') {
+    isLoggedIn = true
+  } else {
+    isLoggedIn = false
+  }
+
   return (
     <Router>
     <Fragment>
       <LoadingBar />
       <div className="App"> 
+      
       {this.props.loading === true
             ? null:
             <Nav />  }    
             
             {this.props.loading === true
             ? null:
-            <Route path='/questions/:id' component={QuestionPage} />  }
+            isLoggedIn !== false ?
+            <Route path='/questions/:id' component={QuestionPage} />:
+            null  }
 
-            {this.props.loading === true
+            {this.props.loading === true  
             ? null:
-            <Route path='/' exact component={Home} />
+            isLoggedIn !== false ?
+            <Route path='/' exact component={Home}  />:
+            null
              }
             
             {this.props.loading === true
             ? null:
-            <Login /> }
+            isLoggedIn === false ?
+            <Login />:
+            null }
 
       </div>
     </Fragment>

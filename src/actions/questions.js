@@ -1,5 +1,6 @@
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS'
 export const ANSWER_QUESTIONS = 'ANSWER_QUESTIONS'
+export const ADD_ANSWER_TO_USER = 'ADD_ANSWER_TO_USER'
 
 export function receiveQuestions (questions) {
     return {
@@ -8,10 +9,22 @@ export function receiveQuestions (questions) {
     }
 }
 
-export function answerQuestions (authedUser, question, ) {
+export function answerQuestion ({ authUser, qid, answer }) {
     return {
         type: ANSWER_QUESTIONS,
-        authedUser,
-        question,
+        authUser,
+        qid,
+        answer
     }
 }
+
+export function addAnswerToUser(authUser, qid, answer) {
+    return {
+      type: ADD_ANSWER_TO_USER,
+      authUser,
+      qid,
+      answer
+    };
+  }
+
+ 
