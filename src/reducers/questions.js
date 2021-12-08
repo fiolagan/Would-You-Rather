@@ -15,9 +15,9 @@ export default function questions (state = {}, action ) {
                     ...state,
                     [authUser]: {
                     ...state[authUser],
-                    [qid]: {
-                        ...state[qid],
-                        answers: [qid]
+                    answers: {
+                        ...state[authUser].answers,
+                        [qid]: answer
                     }
                     }
                 }
