@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import QuestionAnsweredList from './QuestionAnsweredList'
 import QuestionUnansweredList from './QuestionUnansweredList'
-import { NavLink } from 'react-router-dom'
 
 class Home extends Component {
     state = {

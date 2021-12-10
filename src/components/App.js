@@ -7,6 +7,8 @@ import Nav from './Nav'
 import QuestionPage from './QuestionPage'
 import Login from './Login'
 import Home from './Home'
+import Leaderboard from './Leaderboard'
+import QuestionNew from './QuestionNew'
 
 class App extends Component {
 
@@ -45,6 +47,20 @@ render() {
             ? null:
             isLoggedIn !== false ?
             <Route path='/' exact component={Home}  />:
+            null
+             }
+
+            {this.props.loading === true  
+            ? null:
+            isLoggedIn !== false ?
+            <Route path='/add' exact component={QuestionNew}  />:
+            null
+             }
+
+            {this.props.loading === true  
+            ? null:
+            isLoggedIn !== false ?
+            <Route path='/leaderboard' exact component={Leaderboard}  />:
             null
              }
             

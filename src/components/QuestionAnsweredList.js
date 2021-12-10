@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { formatQuestion } from '../utils/helpers'
 import QuestionCard from './QuestionCard'
 
 class QuestionAnsweredList extends Component {
     render() {
-        const { authUser, user, question, author, match } = this.props
+        const { authUser, question } = this.props
         return (
             <div className="question-list">
                 <ul>

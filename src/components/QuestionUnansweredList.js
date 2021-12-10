@@ -5,7 +5,7 @@ import QuestionCard from './QuestionCard'
 
 class QuestionUnansweredList extends Component {
     render() {
-        const { authUser, user, question, author, match } = this.props
+        const { authUser, question } = this.props
         return (
             <div className="question-list">
                 <ul>

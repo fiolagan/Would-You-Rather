@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
-import { formatQuestion } from '../utils/helpers'
+import { uppercaseQuestion } from '../utils/helpers'
 
 class QuestionResult extends Component {
     render() {
-        const { authUser, user, question, id, author, match } = this.props
+        const { authUser, question, id } = this.props
         let questionOneClass
         let questionTwoClass
         const questionOne = question[id].optionOne.text
@@ -26,9 +25,9 @@ class QuestionResult extends Component {
         return (
              
                 <div className='question-block'>
-                    <h3>Results</h3>
+                    <h3>Would you rather...</h3>
                     <div className={`answer-container ${questionOneClass}`}>
-                        <div className='question'>{formatQuestion(questionOne)}</div>
+                        <div className='question'>{uppercaseQuestion(questionOne)}</div>
                         <div className='vote-bar-container'>
                             <div 
                                 className='vote-bar'
@@ -40,7 +39,7 @@ class QuestionResult extends Component {
                         <div className='results'><strong>{questionOneVotes} out of {totalVotes} votes</strong></div>
                     </div>
                     <div className={`answer-container ${questionTwoClass}`}>
-                    <div className='question'>{formatQuestion(questionTwo)}</div>
+                    <div className='question'>{uppercaseQuestion(questionTwo)}</div>
                         <div className='vote-bar-container'>
                             <div 
                                 className='vote-bar'

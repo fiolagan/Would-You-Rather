@@ -1,15 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { formatQuestion } from '../utils/helpers'
+import { uppercaseQuestion } from '../utils/helpers'
 
 class QuestionCard extends Component {
     state = {
         pollText: ''
     }
     render() {
-        const { authUser, user, question, author, match, id } = this.props
-        const authorID = user[question[id].author]
+        const { authUser, user, question, id } = this.props
         const authorName = user[question[id].author].name
         const authorAvatar = user[question[id].author].avatarURL
 
@@ -30,11 +29,12 @@ class QuestionCard extends Component {
                                     <img 
                                         src={authorAvatar}
                                         className='avatar'
+                                        alt='Avatar'
                                         /> 
                                     </div>
                                     <div className='col-8 question-block'>
                                         <h3>Would You Rather?</h3>
-                                        <h4>{formatQuestion(question[id].optionOne.text)} or {formatQuestion(question[id].optionTwo.text)}</h4>
+                                        <h4>{uppercaseQuestion(question[id].optionOne.text)} or {uppercaseQuestion(question[id].optionTwo.text)}</h4>
                                         <Link to={`/questions/${id}`} key={id}><button>{pollText}</button></Link>
                                     </div>
                                 </div>

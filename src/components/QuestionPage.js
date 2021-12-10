@@ -2,10 +2,17 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import QuestionResult from './QuestionResult'
 import QuestionPoll from './QuestionPoll'
+import NoPage from './NoPage'
 
 class QuestionPage extends Component {
     render() {
-        const { authUser, user, question, id, author, match } = this.props
+        
+        const { authUser, user, question, id, checkQuestionExists } = this.props
+
+        if (checkQuestionExists === null) {
+			return <NoPage />
+		}
+
         const authorID = question[id].author
         const authorName = user[authorID].name
         const authorAvatar = user[authorID].avatarURL
@@ -21,6 +28,7 @@ class QuestionPage extends Component {
                                     <img 
                                         src={authorAvatar}
                                         className='avatar'
+                                        alt='Avatar'
                                         /> 
                                     </div>
                                     <div className='col-8'>
@@ -43,7 +51,9 @@ class QuestionPage extends Component {
 }
 
 function mapStateToProps ({ authedUser, questions, users }, props) {
+    
     const { id } = props.match.params
+    const checkQuestionExists = questions[id]
     const authUser = authedUser
     const user = users
     const question = questions
@@ -53,7 +63,7 @@ function mapStateToProps ({ authedUser, questions, users }, props) {
         authUser,
         user,
         question,
-         
+        checkQuestionExists: checkQuestionExists ? checkQuestionExists : null
     }
 }
 

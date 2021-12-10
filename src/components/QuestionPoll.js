@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
-import { formatQuestion } from '../utils/helpers'
+import { uppercaseQuestion } from '../utils/helpers'
 import { answerQuestion } from '../actions/questions'
-import { addAnswerToUser } from '../actions/questions';
+import { addAnswerToUser } from '../actions/users';
 
 
 class QuestionPoll extends Component {
@@ -23,13 +22,13 @@ class QuestionPoll extends Component {
         
         const { dispatch, id, authUser } = this.props
         dispatch(answerQuestion({
-            authedUser: authUser,
+            authUser,
             qid: id,
             answer: this.state.selectedAnswer
         }))
         
         dispatch(addAnswerToUser({
-            authedUser: authUser,
+            authUser,
             qid: id,
             answer: this.state.selectedAnswer
         }))
@@ -38,8 +37,7 @@ class QuestionPoll extends Component {
       
 
     render() {
-        const { authUser, user, question, id, author, match } = this.props
-        const authorID = question[id].author
+        const { authUser, user, question, id } = this.props
         const questionOne = question[id].optionOne.text
         const questionTwo = question[id].optionTwo.text
         console.log(Object.keys(user[authUser].answers).length)
@@ -50,8 +48,8 @@ class QuestionPoll extends Component {
                 <div className='question-block'>
                     <h3>Would You Rather ...</h3>
                     <form className='question-form' onChange={this.handleChange} onSubmit={this.handleSubmit}>
-                        <div><input type="radio" value='optionOne' name="answer" /> {formatQuestion(questionOne)}</div>
-                        <div><input type="radio" value='optionTwo' name="answer" /> {formatQuestion(questionTwo)}</div>
+                        <div><input type="radio" value='optionOne' name="answer" /> {uppercaseQuestion(questionOne)}</div>
+                        <div><input type="radio" value='optionTwo' name="answer" /> {uppercaseQuestion(questionTwo)}</div>
                         <button
                         disabled={this.state.selectedAnswer === ''}
                         >Submit</button>
