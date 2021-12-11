@@ -4,6 +4,9 @@ import { connect } from 'react-redux'
 class NoPage extends Component {
 
     render() {
+
+        const { authUser } = this.props
+
         return (
             <div>
                 <h1>404</h1>
@@ -13,6 +16,13 @@ class NoPage extends Component {
     }
 }
 
+function mapStateToProps ({ authedUser }, props) {
+    
+    const authUser = authedUser
 
+    return {
+        authUser,
+    }
+}
 
-export default connect()(NoPage)
+export default connect(mapStateToProps)(NoPage)

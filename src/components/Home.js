@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import QuestionAnsweredList from './QuestionAnsweredList'
 import QuestionUnansweredList from './QuestionUnansweredList'
@@ -32,16 +32,15 @@ class Home extends Component {
             questionList = <QuestionAnsweredList />
         }
         return (
-            <div>
+            <Fragment>
                 <div className={`tab ${this.state.classAnswered}`} onClick={this.handleUnansweredClick}>
                     Unanswered Questions
                 </div>
                 <div  className={`tab ${this.state.classUnanswered}`} onClick={this.handleAnsweredClick}>
                     Answered Questions
                 </div>
-                 {questionList}
-                
-            </div>
+                 {questionList} 
+            </Fragment>
         )
     }
 }

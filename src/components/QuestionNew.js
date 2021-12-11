@@ -41,23 +41,24 @@ class QuestionNew extends Component {
         }
         return (
             <div>
-                <h3>New Question</h3>
                 <form onSubmit={this.handleSubmit} >
-                    <div className='question-container'>
-                        <h4>Complete the question</h4>
-                        <h3>Would you rather...</h3>
-                        <div>
-                            <input type='text' id='optionOneText' placeholder='Enter Option One Text Here' onChange={this.handleChange} ></input>
-                        </div>
-                        <div>
-                            or
-                        </div>
-                        <div>
-                            <input type='text' id='optionTwoText' placeholder='Enter Option Two Text Here' onChange={this.handleChange} ></input>
-                        </div>
-                        <div>
-                            <button disabled={this.state.optionOneText === '' || this.state.optionTwoText === ''}>Submit</button>
-                        </div>
+                    <div className='tile'>
+                        <div className='tile-title'><h2>Add a new question</h2></div>
+                            <div className='tile-body'>
+                                <h4>Would you rather...</h4>
+                                <div>
+                                    <input type='text' id='optionOneText' placeholder='Enter Option One Text Here' onChange={this.handleChange} ></input>
+                                </div>
+                                <div>
+                                    or
+                                </div>
+                                <div>
+                                    <input type='text' id='optionTwoText' placeholder='Enter Option Two Text Here' onChange={this.handleChange} ></input>
+                                </div>
+                                <div>
+                                    <button disabled={this.state.optionOneText === '' || this.state.optionTwoText === ''}>Submit</button>
+                                </div>
+                            </div>
                     </div>
                 </form>
             </div>

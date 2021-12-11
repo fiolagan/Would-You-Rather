@@ -25,7 +25,7 @@ class QuestionResult extends Component {
         return (
              
                 <div className='question-block'>
-                    <h3>Would you rather...</h3>
+                    <h3>Would you rather...x</h3>
                     <div className={`answer-container ${questionOneClass}`}>
                         <div className='question'>{uppercaseQuestion(questionOne)}</div>
                         <div className='vote-bar-container'>

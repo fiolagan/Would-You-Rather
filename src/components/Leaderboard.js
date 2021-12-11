@@ -1,35 +1,25 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import LeaderboardCard from './LeaderboardCard'
 
 class Leaderboard extends Component {
 
     state = {
         userTotals: ''
     }
-
+    
     render() {
-        const { user } = this.props
-
         return (
-             
-                  <div>
-                      <h3>Leaderboard</h3>
-                      <div className="question-list">
-                      <ul>
-                      {this.props.userIds.map((id) => (
-                          
-                        <li key={id}>
-                            <div className='question-container'>
-                                <div>{user[id].name}</div>
-                                <div>Qs answered: {Object.keys(user[id].answers).length}</div>
-                                <div>Qs asked: {user[id].questions.length}</div>
-                                <div>Total: {Object.keys(user[id].answers).length + user[id].questions.length}</div>
-                            </div>
-                      </li>
+            <div>
+                <div className="question-list leaderboard">
+                <ul>
+                    {this.props.userIds.map((id) => (  
+                    <LeaderboardCard id={id} key={id} />
+                    
                     ))}
-                    </ul>
-                    </div>
-                  </div>
+                </ul>
+            </div>
+        </div>
         )
     }
 }

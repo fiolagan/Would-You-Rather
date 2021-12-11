@@ -21,24 +21,25 @@ class QuestionCard extends Component {
         return (
              
                         <li key={id}>
-                            <div className='question-container'>
-                            <div className='question-title'>{authorName} asks:</div>
-                            <div className='container-fluid'>
-                                <div className='row'>
-                                    <div className='col-4'>
-                                    <img 
-                                        src={authorAvatar}
-                                        className='avatar'
-                                        alt='Avatar'
-                                        /> 
-                                    </div>
-                                    <div className='col-8 question-block'>
-                                        <h3>Would You Rather?</h3>
-                                        <h4>{uppercaseQuestion(question[id].optionOne.text)} or {uppercaseQuestion(question[id].optionTwo.text)}</h4>
-                                        <Link to={`/questions/${id}`} key={id}><button>{pollText}</button></Link>
+                            <div className='tile'>
+                            <div className='tile-title'><h2>{authorName} asks:</h2></div>
+                            <div className='tile-body'>
+                                <div className='container-fluid'>
+                                    <div className='row'>
+                                        <div className='col-4'>
+                                        <img 
+                                            src={authorAvatar}
+                                            className='avatar'
+                                            alt='Avatar'
+                                            /> 
+                                        </div>
+                                        <div className='col-8 question-block'>
+                                            <h3>Would You Rather?</h3>
+                                            <h4>{uppercaseQuestion(question[id].optionOne.text)} or {uppercaseQuestion(question[id].optionTwo.text)}</h4>
+                                            <Link to={`/questions/${id}`} key={id}><button>{pollText}</button></Link>
+                                        </div>
                                     </div>
                                 </div>
-
                             </div>
                              
                         </div>

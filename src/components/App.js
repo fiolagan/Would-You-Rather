@@ -9,6 +9,7 @@ import Login from './Login'
 import Home from './Home'
 import Leaderboard from './Leaderboard'
 import QuestionNew from './QuestionNew'
+import { Redirect } from 'react-router-dom'
 
 class App extends Component {
 
@@ -39,37 +40,20 @@ render() {
             
             {this.props.loading === true
             ? null:
-            isLoggedIn !== false ?
-            <Route path='/questions/:id' component={QuestionPage} />:
-            null  }
-
-            {this.props.loading === true  
-            ? null:
-            isLoggedIn !== false ?
-            <Route path='/' exact component={Home}  />:
-            null
-             }
-
-            {this.props.loading === true  
-            ? null:
-            isLoggedIn !== false ?
-            <Route path='/add' exact component={QuestionNew}  />:
-            null
-             }
-
-            {this.props.loading === true  
-            ? null:
-            isLoggedIn !== false ?
-            <Route path='/leaderboard' exact component={Leaderboard}  />:
-            null
-             }
-            
-            {this.props.loading === true
-            ? null:
             isLoggedIn === false ?
-            <Login />:
-            null }
-
+            
+            <Fragment>
+              <Route path='/' component={Login}   />
+            </Fragment>:
+            isLoggedIn !== false ?
+            <Fragment>
+              <Route path='/' exact component={Home}  />
+              <Route path='/questions/:id' component={QuestionPage} />
+              <Route path='/add' exact component={QuestionNew}  />
+              <Route path='/leaderboard' exact component={Leaderboard}  />
+            </Fragment>:
+            
+            null } 
       </div>
     </Fragment>
     </Router>
@@ -82,7 +66,6 @@ function mapStateToProps ({ authedUser, users, questions  }, props) {
   return {
     loading: authedUser === null,
     authedUser,
-    userID: Object.keys(users),
     users,
     questions,
   }
