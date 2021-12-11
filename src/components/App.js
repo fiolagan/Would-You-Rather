@@ -9,7 +9,6 @@ import Login from './Login'
 import Home from './Home'
 import Leaderboard from './Leaderboard'
 import QuestionNew from './QuestionNew'
-import { Redirect } from 'react-router-dom'
 
 class App extends Component {
 

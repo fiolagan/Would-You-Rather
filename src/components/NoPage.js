@@ -1,11 +1,8 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 
 class NoPage extends Component {
 
     render() {
-
-        const { authUser } = this.props
 
         return (
             <div>
@@ -16,13 +13,5 @@ class NoPage extends Component {
     }
 }
 
-function mapStateToProps ({ authedUser }, props) {
-    
-    const authUser = authedUser
 
-    return {
-        authUser,
-    }
-}
-
-export default connect(mapStateToProps)(NoPage)
+export default NoPage

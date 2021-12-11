@@ -45,12 +45,12 @@ class QuestionNew extends Component {
                     <div className='tile'>
                         <div className='tile-title'><h2>Add a new question</h2></div>
                             <div className='tile-body'>
-                                <h4>Would you rather...</h4>
+                                <h3>Would you rather...</h3>
                                 <div>
                                     <input type='text' id='optionOneText' placeholder='Enter Option One Text Here' onChange={this.handleChange} ></input>
                                 </div>
                                 <div>
-                                    or
+                                <h3>or</h3>
                                 </div>
                                 <div>
                                     <input type='text' id='optionTwoText' placeholder='Enter Option Two Text Here' onChange={this.handleChange} ></input>

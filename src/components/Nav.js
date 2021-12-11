@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { setAuthedUser } from '../actions/authedUser'
-import { NavLink } from 'react-router-dom'
+import { NavLink  } from 'react-router-dom'
 
 class Nav extends Component {
     handleSubmit = (e) => {
@@ -13,7 +13,6 @@ class Nav extends Component {
 
     render() {
         const { authUser, user } = this.props
- 
         let greeting
         let avatar
         let avatarClass

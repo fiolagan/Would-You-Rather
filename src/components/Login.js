@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { setAuthedUser } from '../actions/authedUser'
-import { Redirect } from 'react-router-dom'
 
 class Login extends Component {
 
@@ -21,12 +20,12 @@ class Login extends Component {
         const authID = this.state.selectedUser
         const { dispatch } = this.props
         dispatch(setAuthedUser(authID))
-        
     }
 
 
     render() { 
         const { user } = this.props
+        
         return (
             <div className="tile">
                 <div className='tile-title'>
@@ -49,12 +48,13 @@ class Login extends Component {
     }
 }
 
-function mapStateToProps ({ users }, props) {
+function mapStateToProps ({ users, authedUser }, props) {
     
     const user = users
     return {
         user,
-        userIds: Object.keys(user)
+        userIds: Object.keys(user),
+        authedUser
     }
 }
 
